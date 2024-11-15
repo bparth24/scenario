@@ -105,7 +105,9 @@ This is the most privacy-preserving and modular approach, as it avoids hardcodin
 
 ### **Approach 2: Including Delegation in DID Document**
 
-If explicitly referencing Bob's DID in Alice's DID document is required in certain cases (e.g., strict governance requirements), a **capabilityDelegation** property can be added. This property points to Bob’s DID or a key used by Bob. Example:
+If explicitly referencing Bob's DID in Alice's DID document is required in certain cases (e.g., strict governance requirements), a **[capabilityDelegation](https://www.w3.org/TR/did-core/#capability-delegation)** property can be added. This property points to Bob’s DID or a key used by Bob. Reference: https://www.w3.org/TR/did-core/#capability-delegation 
+
+Example:
 
 #### Alice's DID Document with Delegation Capability
 
