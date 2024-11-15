@@ -1,23 +1,21 @@
+# Delegation Use Case: Parent Authorizing Guardian for School Pickup
+
 Walk through a simple delegation use case: **a parent authorizing a guardian to pick up their child from school** using Decentralized Identifiers (DIDs) and Verifiable Credentials (VCs). This will highlight how DID and VC standards can simplify delegation in a secure and controlled way.
 
----
-
-### **Use Case: Parent Delegating School Pickup to a Guardian**
-
-In this scenario, a parent (Alice) needs to authorize a trusted guardian (Bob) to pick up her child from school. Let’s see how DIDs and VCs can make this process secure, verifiable, and easy to manage.
+In this scenario, a parent (Alice) needs to authorize a trusted guardian (Bob) to pick up her child from school.
 
 ---
 
-### **Flow Breakdown**
+## **Flow Breakdown**
 
-#### **Step 1: Issuance of Parent and Guardian DIDs**
+### **Step 1: Issuance of Parent and Guardian DIDs**
 
 1. **DID Creation**:
    - Alice and Bob each have their own DID, representing their unique, decentralized identity.
    - Alice’s DID might be created when she first registers as a parent with the school.
    - Bob’s DID can be issued similarly when he registers as a trusted contact or family friend with the school, or by Alice directly if the system allows for peer-issued DIDs.
 
-#### **Step 2: Parent Issues a Verifiable Credential to Delegate Authorization**
+### **Step 2: Parent Issues a Verifiable Credential to Delegate Authorization**
 
 1. **Creating the Delegation Credential**:
    - Alice uses her DID-enabled digital wallet (or app) to issue a VC to Bob, authorizing him as a designated person for school pickup.
@@ -32,7 +30,7 @@ In this scenario, a parent (Alice) needs to authorize a trusted guardian (Bob) t
    - Alice’s wallet signs this VC using her DID’s private key, ensuring authenticity.
    - The signed VC is securely sent to Bob’s digital wallet, allowing him to store the credential and present it when needed.
 
-#### **Step 3: Verification Process at the School**
+### **Step 3: Verification Process at the School**
 
 1. **Presenting the Credential**:
    - When Bob arrives at the school for pickup, he presents the VC from his digital wallet to the school’s verification system.
@@ -48,7 +46,7 @@ In this scenario, a parent (Alice) needs to authorize a trusted guardian (Bob) t
    - If the VC is valid and meets all criteria, the school’s system authorizes Bob to pick up the child.
    - If the VC is expired, revoked, or tampered with, the school system denies the pickup request and can notify Alice of any attempts to use an invalid credential.
 
-#### **Step 4: Optional – Revoking or Updating the Authorization**
+### **Step 4: Optional – Revoking or Updating the Authorization**
 
 1. **Revoking the Credential**:
    - If Alice needs to revoke Bob’s authorization, she can do so from her digital wallet.
@@ -59,28 +57,31 @@ In this scenario, a parent (Alice) needs to authorize a trusted guardian (Bob) t
 
 ---
 
-### **Example of the User Flow for Each Participant**
+## **Example of the User Flow for Each Participant**
 
-#### **For Alice (Parent)**
-   - Registers with the school, creating a DID.
-   - Uses a simple app to select delegation options and authorizes Bob as a pickup guardian.
-   - Issues and sends a VC to Bob with a single click.
-   - Can review, revoke, or update this credential as needed from the app.
+### **For Alice (Parent)**
 
-#### **For Bob (Guardian)**
-   - Registers his DID through Alice or the school.
-   - Receives the VC in his digital wallet, which he brings to the school for verification.
-   - Scans a QR code or taps an NFC reader at the school to present his VC.
-   - After the pickup is complete, he receives a confirmation in his wallet for record-keeping.
+- Registers with the school, creating a DID.
+- Uses a simple app to select delegation options and authorizes Bob as a pickup guardian.
+- Issues and sends a VC to Bob with a single click.
+- Can review, revoke, or update this credential as needed from the app.
 
-#### **For the School (Verifier)**
-   - Maintains a verification system to scan and authenticate VCs.
-   - Reads the presented VC, checks issuer (Alice’s DID) and holder (Bob’s DID) info, and validates the authorization.
-   - Records successful pickups for audit logs or compliance needs, without storing any unnecessary personal data.
+### **For Bob (Guardian)**
+
+- Registers his DID through Alice or the school.
+- Receives the VC in his digital wallet, which he brings to the school for verification.
+- Scans a QR code or taps an NFC reader at the school to present his VC.
+- After the pickup is complete, he receives a confirmation in his wallet for record-keeping.
+
+### **For the School (Verifier)**
+
+- Maintains a verification system to scan and authenticate VCs.
+- Reads the presented VC, checks issuer (Alice’s DID) and holder (Bob’s DID) info, and validates the authorization.
+- Records successful pickups for audit logs or compliance needs, without storing any unnecessary personal data.
 
 ---
 
-### **Advantages of Using DIDs and VCs for Delegation**
+## **Advantages of Using DIDs and VCs for Delegation**
 
 1. **Privacy**: Alice controls who has access to her authorization, and the school does not store unnecessary personal data.
 2. **Security**: The system verifies credentials cryptographically, reducing the risk of forgery or impersonation.
@@ -114,7 +115,8 @@ This is the most privacy-preserving and modular approach, as it avoids hardcodin
 
 If explicitly referencing Bob in Alice's DID document is required, a **capabilityDelegation** property can be added. This property points to Bob’s DID or a key used by Bob. Example:
 
-#### Alice's DID Document with Delegation Capability
+### Alice's DID Document with Delegation Capability
+
 ```json
 {
   "@context": "https://www.w3.org/ns/did/v1",
@@ -160,7 +162,7 @@ If explicitly referencing Bob in Alice's DID document is required, a **capabilit
 
 ---
 
-### Appendix
+## Appendix
 
 ---
 
@@ -169,6 +171,7 @@ Below is the delegation flow from Alice to Bob using DIDs and VCs.
 ---
 
 ### **Delegation Flow Diagram**
+
 ```plaintext
 +-------------+                 +----------------+                  +----------------+
 |  Alice      |                 |  Bob           |                  |  Service/       |
@@ -203,7 +206,7 @@ Below is the delegation flow from Alice to Bob using DIDs and VCs.
 
 ### Sample DID Documents
 
-#### **Parent DID Document (Alice)**
+### **Parent DID Document (Alice)**
 
 ```json
 {
@@ -228,7 +231,7 @@ Below is the delegation flow from Alice to Bob using DIDs and VCs.
 
 ---
 
-#### **Guardian DID Document (Bob)**
+### **Guardian DID Document (Bob)**
 
 ```json
 {
@@ -298,6 +301,7 @@ Below is the delegation flow from Alice to Bob using DIDs and VCs.
 ---
 
 ### Key Takeaways
+
 - **Privacy**: No sensitive details about Alice or Bob are shared beyond what is necessary.
 - **Security**: The school system verifies the authenticity of the VC using cryptographic signatures.
 - **Reusability**: This pattern can be applied to other delegation use cases like access to financial accounts or healthcare data sharing.
