@@ -1,1 +1,1 @@
-# Delegation Scenario for Timothy Ruff
+# Delegation Scenario
